@@ -30,7 +30,9 @@ class User:
         return User.userList()
     
 @classmethod
-    def find_credentials_by_userName(cls, userName):
+    def find_credentials_by_userName(cls, userName): 
+        """Function to find user credentials 
+        """
         for credentials in cls.userList:
             if credentials.userName == userName
             return credentials
@@ -38,11 +40,15 @@ class User:
         
 @classmethod
     def copy_password(cls, password):
+        """Function to copy password
+        """
         password_found = User.find_credentials_by_userName(password)
         pyperclip.copy(password_found.password)
 
 @classmethod
     def copy_userName(cls, userName):
+        """Function to copy username
+        """
         username_found = User.find_credentials_by_userName(userName)
         pyperclip.copy(username_found.userName)
         
