@@ -1,4 +1,4 @@
-
+import pyperclip
 
 class Credentials:
     """Class that generates new instances of credentials
@@ -23,3 +23,16 @@ class Credentials:
     
     def delete_credentials(self):
         Credentials.credentials_list.remove(self)
+    
+    @classmethod
+    def find_credentials_by_username(cls,cred_username):
+        
+        for credentials in cls.credentials_list:
+            if credentials.cred_username == cred_username:
+                return credentials
+    
+    @classmethod
+    def display_credentials(cls):
+        return cls.credentials_list
+    
+ 

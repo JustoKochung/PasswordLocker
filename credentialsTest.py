@@ -1,4 +1,5 @@
 import unittest
+import pyperclip
 from credentials import Credentials
 
 class TestCredentials(unittest.TestCase):
@@ -36,8 +37,21 @@ class TestCredentials(unittest.TestCase):
         test_credentials.save_credentials()
         self.new_credentials.delete_credentials()# Deleting the credentials objects
         self.assertEqual(len(Credentials.credentials_list),1)
-        
     
+    def test_find_credentials_by_username(self):
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Ochung", "0712351762")
+        test_credentials.save_credentials()
+        
+        found_credentials = Credentials.find_credentials_by_username("Ochung")
+        
+        self.assertEqual(found_credentials.cred_username, test_credentials.cred_username)
+                
+    def test_display_credentials(self):
+        self.assertEqual(Credentials.display_credentials(), Credentials.credentials_list)
+    
+ 
+        
 if __name__ == '__main__':
     unittest.main()
     
