@@ -14,3 +14,10 @@ class Credentials:
         """
         self.cred_username = cred_username
         self.cred_password = cred_password
+        
+    def save_credentials(self):
+        Credentials.credentials_list.append(self)
+    
+    def save_multiple_credentials():
+        self.new_credentials.save_credentials()
+        
