@@ -20,4 +20,6 @@ class Credentials:
     
     def save_multiple_credentials():
         self.new_credentials.save_credentials()
-        
+    
+    def delete_credentials(self):
+        Credentials.credentials_list.remove(self)

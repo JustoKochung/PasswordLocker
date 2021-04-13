@@ -30,7 +30,14 @@ class TestCredentials(unittest.TestCase):
         test_credentials.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),2)
         
+    def test_delete_credentials(self):
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Ochung", "0712351762")
+        test_credentials.save_credentials()
+        self.new_credentials.delete_credentials()# Deleting the credentials objects
+        self.assertEqual(len(Credentials.credentials_list),1)
         
+    
 if __name__ == '__main__':
     unittest.main()
     
