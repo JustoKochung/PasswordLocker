@@ -1,7 +1,5 @@
 import string
 import random
-
-class Password:
     
     def password_length():
         """Retrieves password length and returns a number
