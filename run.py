@@ -165,9 +165,23 @@ def main():
                             else:
                                 save_credentials(create_credentials(cred_account, cred_username, cred_password))
                                 print(f"Congratulations {cred_account} you successfully created a credential account ")
-                                
+                                print('\n')
                                
-                        
+                    elif cred_shortcode == 'lc':
+                        if display_credentials() :
+                            print("Here is a list of all your credentials")
+                            print("\n")
+                            
+                            for credential in display_credentials():
+                                print(f" cred_account: {credential.cred_account}, cred_username: {credential.cred_username}, cred_password: {credential.cred_password} ")
+                            print("\n")
+                            
+                        else:
+                            print('\n')
+                            print("You have no saved credentials")
+                            print("\n")
+                    elif cred_shortcode      
+                            
                         
                         
                         
