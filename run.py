@@ -126,6 +126,51 @@ def main():
                     print("\n")
                     print("Navigate the credentials account using shortcodes : ac - add credential, lc - list credentials, and dc - delete credentials")
                     print("."*20)
+                    
+                    cred_shortcode = input().lower()
+                    if cred_shortcode == 'ac' :
+                        print("Save new credential. Please enter account for the credentials:  ")
+                        cred_account = input() # Credentials account
+                        print(".."*20)
+                        
+                        print("Enter Username: ")
+                        cred_username = input()
+                        print ("_"*30)
+                        
+                        pass_response = input("Would you prefer a system generated password?. Enter \'y\' for yes or \'n\' for no: ")
+                        
+                        if pass_response == 'y':
+                            created_pass = generate_password(password_length())
+                            confirmed_pass = created_pass
+                            
+                            save_credentials(create_credentials(cred_account, cred_username, cred_password))
+                            print(f"New password ({str(len(created_pass))}): -----> {created_pass}")
+                        
+                        else:
+                            print('Enter password: ')
+                            cred_pass = input()
+                            
+                            print('Confirm password: ')
+                            confirmed_pass = input()
+                            
+                            print('\n')
+                            
+                            if cred_pass != confirmed_pass():
+                                print("Passwords do not much")
+                                print("Enter password: ")
+                                cred_pass = input()
+                                
+                                print("Confirm password: ")
+                                confirmed_pass = input()
+                            else:
+                                save_credentials(create_credentials(cred_account, cred_username, cred_password))
+                                print(f"Congratulations {cred_account} you successfully created a credential account ")
+                                
+                               
+                        
+                        
+                        
+                        
                           
                 
             
