@@ -1,3 +1,4 @@
+#!/usr/bin/env python3.9
 import random
 from user import User
 from credentials import Credentials
@@ -29,8 +30,10 @@ def delete_credentials(cred_account):
     return Credentials.delete_credentials(cred_account)
 
 def main():
+    print("\n")
+    print("*"*15)
     print("Hello, welcome to Password Locker application!")
-    
+    print("*"*15)
     while True:
         print('\n')
         print('*'*10)
@@ -46,12 +49,12 @@ def main():
             print("Enter account name: ")
             created_account_name = input()
             print("-"*15)
-            print("Welcome {{created_account_name}}. Please enter a preferred username:  ")
+            print("Welcome. Please enter a preferred username:  ")
             print("Enter username: ")
             created_username = input()
             print("-"*15)
             
-            pass_response == input("Would you prefer a generated password? Respond with y- for Yes and n- for no: ").lower()
+            pass_response = input("Would you prefer a generated password? Respond with y- for Yes and n- for no: ").lower()
             
             if pass_response == 'y':
                 created_pass = generate_password(password_length())
@@ -97,9 +100,8 @@ def main():
                         print("Enter password: ")
                         entered_password = input()
                     else:
-                        print('\n')
-                        print(f"Welcome {entered_username}. ") 
                         print("*"*15)
+                        print(f"Welcome {entered_username}. ") 
         
         elif short_code == 'lg':
             print("Enter your username: ")
@@ -121,15 +123,14 @@ def main():
                 print("Login successful!")
                 print("*"*10)
                 
-                
                 while True:
                     print("\n")
-                    print("Navigate the credentials account using shortcodes : ac - add credential, lc - list credentials, and dc - delete credentials")
+                    print("Navigate the credentials account using shortcodes : ac - add credential, lc - list credentials, dc - delete credentials, and ex- to exit the app")
                     print("."*20)
                     
                     cred_shortcode = input().lower()
                     if cred_shortcode == 'ac' :
-                        print("Save new credential. Please enter account for the credentials:  ")
+                        print("Save new credential. Please enter account name for the new credentials:  ")
                         cred_account = input() # Credentials account
                         print(".."*20)
                         
@@ -155,7 +156,7 @@ def main():
                             
                             print('\n')
                             
-                            if cred_pass != confirmed_pass():
+                            if cred_pass != confirmed_pass:
                                 print("Passwords do not much")
                                 print("Enter password: ")
                                 cred_pass = input()
@@ -163,7 +164,7 @@ def main():
                                 print("Confirm password: ")
                                 confirmed_pass = input()
                             else:
-                                save_credentials(create_credentials(cred_account, cred_username, cred_password))
+                                save_credentials(create_credentials(cred_account, cred_username, cred_pass))
                                 print(f"Congratulations {cred_account} you successfully created a credential account ")
                                 print('\n')
                                
@@ -173,14 +174,31 @@ def main():
                             print("\n")
                             
                             for credential in display_credentials():
-                                print(f" cred_account: {credential.cred_account}, cred_username: {credential.cred_username}, cred_password: {credential.cred_password} ")
+                                print(f" Account Type: {credential.cred_account}, Username: {credential.cred_username}, Password: {credential.cred_password} ")
                             print("\n")
-                            
+
                         else:
                             print('\n')
                             print("You have no saved credentials")
                             print("\n")
-                    elif cred_shortcode      
+                    elif cred_shortcode == 'dc':
+                        cred_account = input("Enter account name you wish to delete: ")
+                        delete_credentials(cred_account)
+                    elif cred_shortcode == 'ex':
+                        break
+                    else:
+                        print("Invalid shortcodes for credentials")
+                        
+        elif short_code == 'ex':
+            break
+        else:
+            print('Invalid shortcode')
+
+if __name__ == '__main__':
+    
+    main()                     
+                        
+                              
                             
                         
                         
